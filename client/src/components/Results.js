@@ -4,9 +4,9 @@ import ResultRow from "./ResultRow";
 function Results(props) {
     return (
         <div className="card">
-            <div className="card-header">
+            <h4 className="card-header">
                 {props.cardTitle}
-            </div>
+            </h4>
             {props.books.length ? (
                 <div>
                     {props.books.map((book, ind) => (
@@ -15,7 +15,7 @@ function Results(props) {
                                 id={props.window === "search" ? ind : book._id}
                                 title={book.title}
                                 subtitle={book.subtitle}
-                                author={book.author}
+                                authors={book.authors}
                                 imgURL={book.thumbnail}
                                 infoLink={book.link}
                                 description={book.description}
@@ -23,7 +23,7 @@ function Results(props) {
                     ))}
                 </div>                
             ) : (
-                <div className="h3">No Results to Display</div>
+                <div className="h3 p-4 text-center">No Results to Display</div>
             )}
         </div>
     );

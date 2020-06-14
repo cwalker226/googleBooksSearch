@@ -27,7 +27,9 @@ function Saved() {
     }
 
     return(
-        <Results cardTitle="Saved Books" window="saved" books={books} deleteBook={deleteBook}/>
+        <div className="m-4">
+            <Results cardTitle="Saved Books" window="saved" books={books} deleteBook={deleteBook}/>
+        </div>
     );
 }
 

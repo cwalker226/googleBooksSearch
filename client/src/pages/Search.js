@@ -42,7 +42,7 @@ function Search() {
     }
 
     return(        
-        <div>
+        <div className="m-4">
             <SearchCard onSubmit={handleSearch}/>
             <Results cardTitle="Results" window="search" books={books} handleSave={handleSave}/>
         </div>        

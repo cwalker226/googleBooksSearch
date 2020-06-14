@@ -5,7 +5,7 @@ function Nav() {
     const location = useLocation();
     
     return (
-        <nav className="navbar">
+        <nav className="navbar border-bottom">
             <Link className="navbar-brand" to="/">
                 <span className="h1 name">Google Books</span>
             </Link>
