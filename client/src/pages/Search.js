@@ -3,7 +3,6 @@ import SearchCard from "../components/SearchCard";
 import Results from "../components/Results";
 import axios from "axios";
 import API from "../utils/api";
-import BooksContext from "../utils/booksContext";
 
 function Search() {
     const [books, setBooks] = useState([]);
@@ -40,6 +39,7 @@ function Search() {
         const saveResult = books.find(book => book.id === saveID);
         
         API.saveBook({
+            id: saveResult.id,
             authors: saveResult.authors,
             description: saveResult.description,
             thumbnail: saveResult.thumbnail,
@@ -50,13 +50,11 @@ function Search() {
         .catch(err => console.log(err));
     }
 
-    return(
-        <BooksContext.Provider value={{ books, handleSave }}>
-            <div>
-                <SearchCard onSubmit={handleSearch}/>
-                <Results cardTitle="Results" window="search"/>
-            </div>
-        </BooksContext.Provider>
+    return(        
+        <div>
+            <SearchCard onSubmit={handleSearch}/>
+            <Results cardTitle="Results" window="search" books={books} handleSave={handleSave}/>
+        </div>        
     );
 }
 

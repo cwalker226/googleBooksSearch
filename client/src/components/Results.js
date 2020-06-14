@@ -1,18 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import ResultRow from "./ResultRow";
-import BooksContext from "../utils/booksContext";
 
 function Results(props) {
-    const { books } = useContext(BooksContext);
-
     return (
         <div className="card">
             <div className="card-header">
                 {props.cardTitle}
             </div>
-            {books.length ? (
+            {props.books.length ? (
                 <div>
-                    {books.map(book => (
+                    {props.books.map(book => (
                         <ResultRow key={book.id}
                                 window={props.window}
                                 id={book.id}
@@ -21,7 +18,8 @@ function Results(props) {
                                 author={book.author}
                                 imgURL={book.thumbnail}
                                 infoLink={book.link}
-                                description={book.description}/>
+                                description={book.description}
+                                onClick={props.handleSave}/>
                     ))}
                 </div>                
             ) : (
