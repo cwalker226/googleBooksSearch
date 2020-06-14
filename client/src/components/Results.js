@@ -1,13 +1,28 @@
 import React from "react";
 import ResultRow from "./ResultRow";
 
-function Results() {
+function Results(props) {
     return (
         <div className="card">
             <div className="card-header">
-                Book Search
+                {props.cardTitle}
             </div>
-            <ResultRow/>
+            {props.books.length ? (
+                <div>
+                    {props.books.map(book => (
+                        <ResultRow key={book.id}
+                                window={props.window}
+                                title={book.title}
+                                subtitle={book.subtitle}
+                                author={book.author}
+                                imgURL={book.thumbnail}
+                                infoLink={book.link}
+                                description={book.description}/>
+                    ))}
+                </div>                
+            ) : (
+                <div className="h3">No Results to Display</div>
+            )}
         </div>
     );
 }

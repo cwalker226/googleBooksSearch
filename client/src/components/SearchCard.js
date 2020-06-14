@@ -1,17 +1,17 @@
 import React from "react";
 
-function SearchCard() {
+function SearchCard(props) {
     return(
         <div className="card">
             <div className="card-header">
                 Book Search
             </div>
-            <form>
+            <form {...props}>
                 <div className="form-group">
-                    <label for="searchInput">Book</label>
+                    <label>Book</label>
                     <input type="text" className="form-control" id="searchInput"/>
                 </div>
-                <button type="submit" className="btn btn-primary justify-content-end">Search</button>
+                <button className="btn btn-primary" style={{ float: "right" }}>Search</button>
             </form>
         </div>
     );
