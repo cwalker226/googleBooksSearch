@@ -11,11 +11,7 @@ function ResultRow(props) {
                 </div>
                 <div className="col-3">
                     <a className="btn" href={props.infoLink}>View</a>
-                    {props.window === "search" ? (
-                        <div className="btn" onClick={props.onClick} id={props.id}>Save</div>
-                    ) : (
-                        <div className="btn">Delete</div>
-                    )}                    
+                    <div className="btn" onClick={props.onClick} id={props.id}>{props.window === "search" ? "Save" : "Delete"}</div>
                 </div>
             </div>
             <div className="row">

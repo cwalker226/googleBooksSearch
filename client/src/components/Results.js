@@ -9,17 +9,17 @@ function Results(props) {
             </div>
             {props.books.length ? (
                 <div>
-                    {props.books.map(book => (
-                        <ResultRow key={book.id}
+                    {props.books.map((book, ind) => (
+                        <ResultRow key={ind}
                                 window={props.window}
-                                id={book.id}
+                                id={props.window === "search" ? ind : book._id}
                                 title={book.title}
                                 subtitle={book.subtitle}
                                 author={book.author}
                                 imgURL={book.thumbnail}
                                 infoLink={book.link}
                                 description={book.description}
-                                onClick={props.handleSave}/>
+                                onClick={props.window === "search" ? props.handleSave : props.deleteBook}/>
                     ))}
                 </div>                
             ) : (

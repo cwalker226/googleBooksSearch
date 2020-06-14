@@ -36,17 +36,8 @@ function Search() {
 
     function handleSave(event) {
         const saveID = event.target.id;
-        const saveResult = books.find(book => book.id === saveID);
         
-        API.saveBook({
-            id: saveResult.id,
-            authors: saveResult.authors,
-            description: saveResult.description,
-            thumbnail: saveResult.thumbnail,
-            link: saveResult.link,
-            title: saveResult.title,
-            subtitle: saveResult.subtitle
-        })
+        API.saveBook(books[saveID])
         .catch(err => console.log(err));
     }
 
