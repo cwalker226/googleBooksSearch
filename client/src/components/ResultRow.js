@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import BooksContext from "../utils/booksContext";
 
 function ResultRow(props) {
+    const { handleSave } = useContext(BooksContext);
+
     return (
         <div className="container">
             <div className="row">
@@ -12,7 +15,7 @@ function ResultRow(props) {
                 <div className="col-3">
                     <a className="btn" href={props.infoLink}>View</a>
                     {props.window === "search" ? (
-                        <div className="btn">Save</div>
+                        <div className="btn" onClick={handleSave} id={props.id}>Save</div>
                     ) : (
                         <div className="btn">Delete</div>
                     )}                    

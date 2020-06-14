@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SearchCard from "../components/SearchCard";
 import Results from "../components/Results";
 import axios from "axios";
+import API from "../utils/api";
+import BooksContext from "../utils/booksContext";
 
 function Search() {
     const [books, setBooks] = useState([]);
@@ -33,11 +35,28 @@ function Search() {
         .catch(err => console.log(err));
     }
 
+    function handleSave(event) {
+        const saveID = event.target.id;
+        const saveResult = books.find(book => book.id === saveID);
+        
+        API.saveBook({
+            authors: saveResult.authors,
+            description: saveResult.description,
+            thumbnail: saveResult.thumbnail,
+            link: saveResult.link,
+            title: saveResult.title,
+            subtitle: saveResult.subtitle
+        })
+        .catch(err => console.log(err));
+    }
+
     return(
-        <div>
-            <SearchCard onSubmit={handleSearch}/>
-            <Results cardTitle="Results" window="search" books={books}/>
-        </div>
+        <BooksContext.Provider value={{ books, handleSave }}>
+            <div>
+                <SearchCard onSubmit={handleSearch}/>
+                <Results cardTitle="Results" window="search"/>
+            </div>
+        </BooksContext.Provider>
     );
 }
 
